@@ -9,5 +9,8 @@ uniform sampler2D image;
 out vec4 FragColor;
 
 void main() {
-    FragColor = texture(image, texcoord);
+	vec4 color = texture(image, texcoord);
+	float luminance = 0.299 * color.x + 0.587 * color.y + 0.114 * color.z;
+	vec4 final_color = vec4(luminance, luminance, luminance, 1.0);
+    FragColor = final_color;
 }
